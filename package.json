@@ -1,17 +1,16 @@
+
 {
-  "name": "your-project-name",
+  "name": "your-nodejs-project",
   "version": "1.0.0",
-  "description": "Description of your project",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "axios": "^0.24.0"
-    
+    "axios": "^0.24.0",
+    "animejs": "^3.2.1"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=10.0.0"
   }
