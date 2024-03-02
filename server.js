@@ -15,7 +15,7 @@ app.use(express.static('Public'));
 app.use('/public', express.static(path.join(__dirname, 'Public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Public', 'login.html'));
+    res.sendFile(path.join(__dirname, 'Public', 'index.html'));
 });
 
 
