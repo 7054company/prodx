@@ -14,7 +14,7 @@ app.use(express.static('public'));
 // });
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'public/index.html');
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
 // Define route for fetching IP details by providing any IP address
