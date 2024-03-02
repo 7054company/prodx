@@ -6,21 +6,18 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Serve static files from the 'public' directory
-app.use(express.static('public'));
+app.use(express.static('Public'));
 
 // Define route for the main page
 // app.get('/', (req, res) => {
 //  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 // });
-app.use('/public', express.static(path.join(__dirname, 'public'));
+app.use('/public', express.static(path.join(__dirname, 'Public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+    res.sendFile(path.join(__dirname, 'Public', 'login.html'));
 });
 
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
-});
 
 // Define route for fetching IP details by providing any IP address
 app.get('/ip/:ip?', async (req, res) => {
