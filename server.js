@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Define route for fetching IP details
-app.get('/ip', async (req, res) => {
-  const clientIp = getClientIp(req); // Get the client's IP address
+// Define route for fetching IP details by providing any IP address
+app.get('/ip/:ip?', async (req, res) => {
+  const clientIp = req.params.ip || getClientIp(req); // Get the client's IP address
 
   try {
     const ipDetails = await axios.get(`https://ipinfo.io/${clientIp}`);
@@ -36,4 +36,3 @@ function getClientIp(req) {
   // Check for proxy headers or use req.connection.remoteAddress directly
   return req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 }
- 
