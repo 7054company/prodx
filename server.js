@@ -6,13 +6,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Serve static files from the 'public' directory
-app.use(express.static('Public'));
+//app.use(express.static('Public'));
 
 // Define route for the main page
-// app.get('/', (req, res) => {
-//  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
-app.use('/public', express.static(path.join(__dirname, 'Public'));
+
+//app.use('/public', express.static(path.join(__dirname, 'Public'));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'Public', 'index.html'));
