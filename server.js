@@ -1,3 +1,4 @@
+
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
@@ -8,17 +9,17 @@ const PORT = process.env.PORT || 3000;
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Middleware to serve custom 404 page
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+// Define route for the main page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Endpoint to fetch IP details
-app.get('/ip/:ipAddress', async (req, res) => {
-  const ipAddress = req.params.ipAddress;
+// Define route for fetching IP details
+app.get('/ip', async (req, res) => {
+  const clientIp = getClientIp(req); // Get the client's IP address
 
   try {
-    const ipDetails = await axios.get(`https://ipinfo.io/${ipAddress}`);
+    const ipDetails = await axios.get(`https://ipinfo.io/${clientIp}`);
     res.json(ipDetails.data);
   } catch (error) {
     res.status(500).json({ error: 'Unable to fetch IP details' });
@@ -29,4 +30,10 @@ app.get('/ip/:ipAddress', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+// Helper function to get client's IP address
+function getClientIp(req) {
+  // Check for proxy headers or use req.connection.remoteAddress directly
+  return req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+}
  
