@@ -1,4 +1,3 @@
-
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
@@ -18,9 +17,14 @@ app.get('/', (req, res) => {
 app.get('/ip/:ip?', async (req, res) => {
   const clientIp = req.params.ip || getClientIp(req); // Get the client's IP address
 
+  if (!req.params.ip) {
+    return res.send('Please provide an IP address. Example: /ip/8.8.8.8');
+  }
+
   try {
-    const ipDetails = await axios.get(`https://ipinfo.io/${clientIp}`);
-    res.json(ipDetails.data);
+    const ipDetailsResponse = await axios.get(`https://ipinfo.io/${clientIp}`);
+    const ipDetails = removeReadmeProperty(ipDetailsResponse.data);
+    res.json(ipDetails);
   } catch (error) {
     res.status(500).json({ error: 'Unable to fetch IP details' });
   }
@@ -35,4 +39,12 @@ app.listen(PORT, () => {
 function getClientIp(req) {
   // Check for proxy headers or use req.connection.remoteAddress directly
   return req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+}
+
+// Helper function to remove "readme" property from ipinfo.io response
+function removeReadmeProperty(ipDetails) {
+  if (ipDetails && ipDetails.readme) {
+    delete ipDetails.readme;
+  }
+  return ipDetails;
 }
