@@ -1,11 +1,11 @@
 const express = require('express');
 const apiRouter = require('./api');
+const authRouter = require('./auth');
 const axios = require('axios');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const bodyParser = require('body-parser');
-const authRouter = require('./auth');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
