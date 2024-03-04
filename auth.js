@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const jwt = require('jsonwebtoken');
+
+const secretKey = '12345'; // Replace with a secure secret key
 
 // Define a route for login
 router.post('/login', (req, res) => {
@@ -20,7 +23,11 @@ router.post('/login', (req, res) => {
         for (const line of lines) {
             const [id, name, pass] = line.split(' ');
             if (name === username && pass === password) {
-                return res.json({ message: 'Login successful', userId: id });
+                // Generate a JWT token
+                const token = jwt.sign({ userId: id }, secretKey, { expiresIn: '1h' });
+
+                // Return token along with success message
+                return res.json({ message: 'Login successful', token });
             }
         }
 
