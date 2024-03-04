@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files (e.g., login.html) from the 'views' directory
-app.use(express.static(path.join(__dirname, 'views')));
+// app.use(express.static(path.join(__dirname, 'views')));
 
 // Use the apiRouter for '/api' endpoints
 app.use('/api', apiRouter);
