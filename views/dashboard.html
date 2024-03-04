@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Dashboard</title>
-   </head>
-   <body>
-       <h2>Dashboard</h2>
-       <div id="userInfo"></div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Dashboard</h2>
+    <div id="userInfo"></div>
 
-       <script src="dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve the stored token from localStorage
+            const token = localStorage.getItem('token');
+
+            // Make a GET request to the server with the stored token
+            fetch('/api/u', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display user details on the page
+                document.getElementById('userInfo').innerHTML = `
+                    <p>User ID: ${data.uid}</p>
+                    <p>Name: ${data.name}</p>
+                    <p>Email: ${data.email}</p>
+                `;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
+  <script src="dashboard.js"></script>
    </body>
    </html>
