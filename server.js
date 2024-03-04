@@ -1,10 +1,10 @@
 const express = require('express');
 const apiRouter = require('./api');
 const authRouter = require('./auth');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const axios = require('axios');
 const path = require('path');
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 const app = express();
