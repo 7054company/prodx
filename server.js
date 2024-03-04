@@ -1,5 +1,6 @@
 const express = require('express');
 const apiRouter = require('./api');
+const authRouter = require('./auth');
 const axios = require('axios');
 const path = require('path');
 
