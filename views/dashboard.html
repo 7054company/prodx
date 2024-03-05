@@ -4,14 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <style>
+        /* You can add your own styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #userInfo {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Dashboard</h2>
+    <h1>Dashboard Overview</h1>
+    <h2 id="welcomeMessage"></h2>
     <button onclick="fetchUserDetails()">Fetch User Details</button>
     <div id="userInfo"></div>
 
     <script>
-        function fetchUserDetails() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Retrieve the stored token from localStorage
             const token = localStorage.getItem('token');
 
@@ -25,9 +50,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Display user details on the page
+                // Display welcome message and user details on the page
+                document.getElementById('welcomeMessage').textContent = `Welcome ${data.username}!`;
                 document.getElementById('userInfo').innerHTML = `
                     <p>User ID: ${data.uid}</p>
+                    <p>Username: ${data.username}</p>
                     <p>Name: ${data.name}</p>
                     <p>Email: ${data.email}</p>
                 `;
@@ -35,7 +62,7 @@
             .catch(error => {
                 console.error('Error:', error);
             });
-        }
+        });
     </script>
 </body>
 </html>
