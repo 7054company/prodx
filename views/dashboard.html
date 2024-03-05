@@ -195,5 +195,35 @@
             });
         });
     </script>
+
+
+
+<!-- Your content in index.html -->
+<select id="serviceOption" onchange="loadContent()">
+  <option value="service.html">Service</option>
+  <!-- Add other options as needed -->
+</select>
+<div id="contentContainer">
+  <!-- Content will be loaded here -->
+</div>
+
+<!-- Your other HTML content -->
+
+<!-- Your script to handle the dynamic loading -->
+<script>
+  function loadContent() {
+    const selectedOption = document.getElementById('serviceOption').value;
+    
+    fetch(selectedOption)
+      .then(response => response.text())
+      .then(content => {
+        document.getElementById('contentContainer').innerHTML = content;
+      })
+      .catch(error => console.error('Error loading content:', error));
+  }
+</script>
+
+
+    
 </body>
 </html>
