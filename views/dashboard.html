@@ -198,21 +198,18 @@
 
 
 
+
+
 <!-- Your content in index.html -->
-<select id="serviceOption" onchange="loadContent()">
-  <option value="index.html">Service</option>
-  <!-- Add other options as needed -->
-</select>
+<button onclick="loadContent()">Load Service Page</button>
 <div id="contentContainer">
   <!-- Content will be loaded here -->
 </div>
 
-<!-- Your other HTML content -->
-
 <!-- Your script to handle the dynamic loading -->
 <script>
   function loadContent() {
-    const selectedOption = document.getElementById('serviceOption').value;
+    const selectedOption = 'index.html'; // Adjust the path based on your file structure
     
     fetch(selectedOption)
       .then(response => response.text())
@@ -222,6 +219,7 @@
       .catch(error => console.error('Error loading content:', error));
   }
 </script>
+
 
 
     
