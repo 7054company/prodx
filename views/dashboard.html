@@ -117,9 +117,9 @@
 
 /* Certainly! Here's a simple example of HTML code for an upper header with a company logo on the left and menu buttons on the right: */
 
-I apologize for any confusion. Let's try a simpler and more isolated example:
+Certainly, if the dropdown options are appearing at the bottom of the screen, it might be due to the absolute positioning. Let's adjust the positioning to ensure the dropdown opens above the menu button. Here's the modified code:
 
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,7 +153,7 @@ I apologize for any confusion. Let's try a simpler and more isolated example:
     .dropdown-menu {
       display: none;
       position: absolute;
-      top: 100%;
+      top: calc(100% + 10px);
       right: 0;
       background-color: #ffffff;
       border: 1px solid #ccc;
