@@ -118,6 +118,9 @@
 /* Certainly! Here's a simple example of HTML code for an upper header with a company logo on the left and menu buttons on the right: */
 
 
+I see, you want to ensure that the dropdown menu doesn't go outside the right side of the page. Let's adjust the code to make sure the dropdown is within the viewport when it opens to the left. I've modified the code to address this issue:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,7 +169,8 @@
       display: none;
       position: absolute;
       top: calc(100% + 10px);
-      left: 1000;
+      left: 0;
+      right: 0; /* Adjusted to ensure it doesn't go outside the right side */
       background-color: #ffffff;
       border: 1px solid #ccc;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -225,6 +229,9 @@
 
 </body>
 </html>
+```
+
+Now, the dropdown menu should stay within the right side of the page when it opens. Adjustments can be made based on your specific design requirements.
 
   <!-- Rest of your website content goes here -->
 
