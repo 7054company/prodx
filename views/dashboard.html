@@ -118,8 +118,6 @@
 
 /* Certainly! Here's a simple example of HTML code for an upper header with a company logo on the left and menu buttons on the right: */
 
-  
-
   <style>
     body {
       margin: 0;
@@ -132,16 +130,12 @@
       border-top: 4px solid #6e7ebc;
       padding: 10px 20px;
       display: flex;
-      justify-content: flex-end; /* Align items to the right */
+      justify-content: space-between;
       align-items: center;
     }
 
     .logo img {
       max-height: 40px;
-    }
-
-    .menu-container {
-      position: relative;
     }
 
     .menu-button {
@@ -152,8 +146,7 @@
       display: none;
       position: absolute;
       top: 100%;
-      right: auto;
-      left: auto; /* Reset the left property to auto */
+      right: 0;
       background-color: #ffffff;
       border: 1px solid #ccc;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -171,18 +164,15 @@
 <body>
 
   <div class="upper-header">
-    <div class="menu-container">
-      <div class="menu-button" onclick="toggleDropdown()">Menu</div>
-      <div class="dropdown-menu" id="dropdownMenu">
-        <a href="#" class="dropdown-item">Option 1</a>
-        <a href="#" class="dropdown-item">Option 2</a>
-        <a href="#" class="dropdown-item">Option 3</a>
-      </div>
-    </div>
     <div class="logo">
       <img src="https://xen.netlify.app/img/logo.png" alt="7ea logo">
     </div>
-  </div>
+    <div class="menu-button" onclick="toggleDropdown()">Menu</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="#" class="dropdown-item">Option 1</a>
+      <a href="#" class="dropdown-item">Option 2</a>
+      <a href="#" class="dropdown-item">Option 3</a>
+    </div>
 
   <script>
     function toggleDropdown() {
@@ -202,6 +192,10 @@
 
 </body>
 </html>
+
+  
+
+  
 
   <!-- Rest of your website content goes here -->
 
