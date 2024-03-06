@@ -120,12 +120,7 @@
 Certainly, if the dropdown options are appearing at the bottom of the screen, it might be due to the absolute positioning. Let's adjust the positioning to ensure the dropdown opens above the menu button. Here's the modified code:
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Website</title>
+
   <style>
     body {
       margin: 0;
@@ -149,7 +144,9 @@ Certainly, if the dropdown options are appearing at the bottom of the screen, it
     .menu-button {
       cursor: pointer;
     }
-
+    .dropdown-menu.show {
+    display: block;
+    }
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -168,7 +165,7 @@ Certainly, if the dropdown options are appearing at the bottom of the screen, it
       display: block;
     }
   </style>
-</head>
+
 <body>
 
   <div class="upper-header">
@@ -183,22 +180,24 @@ Certainly, if the dropdown options are appearing at the bottom of the screen, it
     </div>
   </div>
 
-  <script>
-    function toggleDropdown() {
-      var dropdown = document.getElementById("dropdownMenu");
-      dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
-    }
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var menuButton = document.querySelector('.menu-button');
+    var dropdownMenu = document.querySelector('.dropdown-menu');
 
-    window.onclick = function(event) {
-      var dropdown = document.getElementById("dropdownMenu");
-      if (!event.target.matches('.menu-button') && !event.target.matches('.dropdown-item') && !event.target.matches('.dropdown-menu')) {
-        dropdown.style.display = "none";
+    menuButton.addEventListener('click', function () {
+      dropdownMenu.classList.toggle('show');
+    });
+
+    window.onclick = function (event) {
+      if (!event.target.matches('.menu-button') && !event.target.matches('.dropdown-item')) {
+        dropdownMenu.classList.remove('show');
       }
-    }
-  </script>
+    };
+  });
+</script>
 
-</body>
-</html>
+  
 
   <!-- Rest of your website content goes here -->
 
