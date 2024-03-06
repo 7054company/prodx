@@ -118,8 +118,8 @@
 
 /* Certainly! Here's a simple example of HTML code for an upper header with a company logo on the left and menu buttons on the right: */
 
+  
   <style>
-    /* Add your CSS styles here */
     body {
       margin: 0;
       padding: 0;
@@ -127,8 +127,8 @@
     }
 
     .upper-header {
-      background-color: #ffffff; /* Set your desired background color */
-      border-top: 4px solid #6e7ebc; /* Border color like Heroku's upper side */
+      background-color: #ffffff;
+      border-top: 4px solid #6e7ebc;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -136,12 +136,29 @@
     }
 
     .logo img {
-      max-height: 40px; /* Adjust the max height of your logo */
+      max-height: 40px;
     }
 
-    .menu-buttons {
-      display: flex;
-      gap: 20px;
+    .menu-button {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .dropdown-item {
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      display: block;
     }
   </style>
 </head>
@@ -151,21 +168,36 @@
     <div class="logo">
       <img src="https://xen.netlify.app/img/logo.png" alt="7ea logo">
     </div>
-    <div class="menu-buttons">
-      <button>Home</button>
-      <button>About</button>
-      <button>Contact</button>
-      <!-- Add more buttons as needed -->
+    <div class="menu-button" onclick="toggleDropdown()">Menu</div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <a href="#" class="dropdown-item">Option 1</a>
+      <a href="#" class="dropdown-item">Option 2</a>
+      <a href="#" class="dropdown-item">Option 3</a>
     </div>
   </div>
 
+  <script>
+    function toggleDropdown() {
+      var dropdown = document.getElementById("dropdownMenu");
+      dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-button')) {
+        var dropdowns = document.getElementsByClassName("dropdown-menu");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.style.display === "block") {
+            openDropdown.style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+
   <!-- Rest of your website content goes here -->
 
-</body>
-</html>
-
-
-
+<
 
     
     <h1>Dashboard Overview</h1>
