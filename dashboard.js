@@ -39,15 +39,14 @@ router.get('/u', (req, res) => {
         // Find the user based on userId
         const lines = data.split('\n');
         for (const line of lines) {
-            const [id, username, pass, fname, lname, email, ip] = line.split(' ');
+            const [id, username, pass, name, email] = line.split(' ');
             if (id === userId) {
-                // Return user details including IP address
+                // Return user details
                 const userDetails = {
                     uid: id,
                     username: username,
-                    name: `${fname} ${lname}`, // Combine fname and lname
+                    name: name,
                     email: email,
-                    ip: ip, // Add IP address to the response
                 };
                 return res.json(userDetails);
             }
