@@ -47,7 +47,7 @@ router.get('/u', (req, res) => {
                     username: username,
                     name: `${fname} ${lname}`, // Combine fname and lname
                     email: email,
-                    ip: ip // Add IP address to the response
+                    ip: ip, // Add IP address to the response
                 };
                 return res.json(userDetails);
             }
