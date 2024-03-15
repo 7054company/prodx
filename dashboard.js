@@ -39,13 +39,13 @@ router.get('/u', (req, res) => {
         // Find the user based on userId
         const lines = data.split('\n');
         for (const line of lines) {
-            const [id, username, pass, name, email, ip] = line.split(' ');
+            const [id, username, pass, lname, fname, email, ip] = line.split(' ');
             if (id === userId) {
                 // Return user details
                 const userDetails = {
                     uid: id,
                     username: username,
-                    name: name,
+                    name: `${fname} ${lname}`,
                     email: email,
                     ip: ip,
                 };
