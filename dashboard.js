@@ -44,8 +44,8 @@ router.get('/u', (req, res) => {
                 // Return user details
                 const userDetails = {
                     uid: id,
-                    username: name,
-                    name: username,
+                    username: username,
+                    name: name,
                     email: email,
                 };
                 return res.json(userDetails);
